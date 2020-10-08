@@ -1,0 +1,267 @@
+[
+  {
+    "Id": 1,
+    "Name": "gifts for men",
+    "Description": ""
+  },
+  {
+    "Id": 2,
+    "Name": "gifts for women",
+    "Description": ""
+  },
+  {
+    "Id": 3,
+    "Name": "gifts for dad",
+    "Description": ""
+  },
+  {
+    "Id": 4,
+    "Name": "gifts for mom",
+    "Description": ""
+  },
+  {
+    "Id": 5,
+    "Name": "gifts for kids",
+    "Description": ""
+  },
+  {
+    "Id": 6,
+    "Name": "gifts for teen boys",
+    "Description": ""
+  },
+  {
+    "Id": 7,
+    "Name": "gifts for teenage girls",
+    "Description": ""
+  },
+  {
+    "Id": 8,
+    "Name": "gifts for couples",
+    "Description": ""
+  },
+  {
+    "Id": 9,
+    "Name": "gifts for boyfriend",
+    "Description": ""
+  },
+  {
+    "Id": 10,
+    "Name": "gifts for parents",
+    "Description": ""
+  },
+  {
+    "Id": 11,
+    "Name": "gifts for coworkers",
+    "Description": ""
+  },
+  {
+    "Id": 12,
+    "Name": "gifts for boss",
+    "Description": ""
+  },
+  {
+    "Id": 13,
+    "Name": "gifts for grandma",
+    "Description": ""
+  },
+  {
+    "Id": 14,
+    "Name": "gifts for grandpa",
+    "Description": ""
+  },
+  {
+    "Id": 15,
+    "Name": "gifts for best friend",
+    "Description": ""
+  },
+  {
+    "Id": 16,
+    "Name": "gifts for sisters",
+    "Description": ""
+  },
+  {
+    "Id": 17,
+    "Name": "gifts for sister in law",
+    "Description": ""
+  },
+  {
+    "Id": 18,
+    "Name": "gifts for brothers",
+    "Description": ""
+  },
+  {
+    "Id": 19,
+    "Name": "gifts for mother in law",
+    "Description": ""
+  },
+  {
+    "Id": 20,
+    "Name": "gifts for father in law",
+    "Description": ""
+  },
+  {
+    "Id": 21,
+    "Name": "gifts for nurses",
+    "Description": ""
+  },
+  {
+    "Id": 22,
+    "Name": "gifts for teachers",
+    "Description": ""
+  },
+  {
+    "Id": 23,
+    "Name": "gifts for gamers",
+    "Description": ""
+  },
+  {
+    "Id": 24,
+    "Name": "gifts for photographers",
+    "Description": ""
+  },
+  {
+    "Id": 25,
+    "Name": "gifts for fishermen",
+    "Description": ""
+  },
+  {
+    "Id": 26,
+    "Name": "gifts for pets",
+    "Description": ""
+  },
+  {
+    "Id": 27,
+    "Name": "valentines day gifts for her",
+    "Description": ""
+  },
+  {
+    "Id": 28,
+    "Name": "valentines day gifts for him",
+    "Description": ""
+  },
+  {
+    "Id": 29,
+    "Name": "anniversary gifts for her",
+    "Description": ""
+  },
+  {
+    "Id": 30,
+    "Name": "anniversary gifts for him",
+    "Description": ""
+  },
+  {
+    "Id": 31,
+    "Name": "firefighter gifts",
+    "Description": ""
+  },
+  {
+    "Id": 32,
+    "Name": "fathers day gifts",
+    "Description": ""
+  },
+  {
+    "Id": 33,
+    "Name": "mothers day gifts",
+    "Description": ""
+  },
+  {
+    "Id": 34,
+    "Name": "christmas gifts for mom",
+    "Description": ""
+  },
+  {
+    "Id": 35,
+    "Name": "gifts for geeks",
+    "Description": ""
+  },
+  {
+    "Id": 36,
+    "Name": "white elephant gifts",
+    "Description": ""
+  },
+  {
+    "Id": 37,
+    "Name": "graduation gifts",
+    "Description": ""
+  },
+  {
+    "Id": 38,
+    "Name": "birthday gifts for dad",
+    "Description": ""
+  },
+  {
+    "Id": 39,
+    "Name": "groomsmen gifts",
+    "Description": ""
+  },
+  {
+    "Id": 40,
+    "Name": "bridesmaid gifts",
+    "Description": ""
+  },
+  {
+    "Id": 41,
+    "Name": "housewarming gifts",
+    "Description": ""
+  },
+  {
+    "Id": 42,
+    "Name": "21st birthday gifts",
+    "Description": ""
+  },
+  {
+    "Id": 43,
+    "Name": "bar mitzvah gifts",
+    "Description": ""
+  },
+  {
+    "Id": 44,
+    "Name": "personalized gifts",
+    "Description": ""
+  },
+  {
+    "Id": 45,
+    "Name": "prank gifts",
+    "Description": ""
+  },
+  {
+    "Id": 46,
+    "Name": "gag gifts",
+    "Description": ""
+  },
+  {
+    "Id": 47,
+    "Name": "star wars gifts",
+    "Description": ""
+  },
+  {
+    "Id": 48,
+    "Name": "harry potter gifts",
+    "Description": ""
+  },
+  {
+    "Id": 49,
+    "Name": "funny gifts",
+    "Description": ""
+  },
+  {
+    "Id": 50,
+    "Name": "gifts home and office gifts",
+    "Description": ""
+  },
+  {
+    "Id": 51,
+    "Name": "pokemon gifts",
+    "Description": ""
+  },
+  {
+    "Id": 52,
+    "Name": "sloth gifts",
+    "Description": ""
+  },
+  {
+    "Id": 53,
+    "Name": "firefighter gifts",
+    "Description": ""
+  }
+]

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using API.Contexts;
 using API.Entities;
@@ -23,15 +24,25 @@ namespace API.Services
                .ToList();
         }
 
-        public ICollection<Product> GetProducts(string name, string description)
-        {
-
-            if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(description)) return GetProducts();
-
+        public ICollection<Product> GetProducts(string name, string description, string sortName)
+        {            
             var collection = _context.Products as IQueryable<Product>;
+            
+            if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(description) && string.IsNullOrWhiteSpace(sortName))
+                return GetProducts();
+            
+            if (!string.IsNullOrWhiteSpace(sortName) && sortName.Equals("asc"))
+            {
+                collection = collection.OrderBy(p => p.Name);
+                return collection.ToList();
+            }
+            else if(!string.IsNullOrWhiteSpace(sortName) && sortName.Equals("desc"))
+            {
+                collection = collection.OrderByDescending(p => p.Name);
+                return collection.ToList();
+            }
 
-            
-            
+
             if (!string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(description))
             {
                 collection =  collection.Where(p => p.Name.ToLower().Contains(name.ToLower()));

@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
     [ApiController]
-    [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
         private readonly ICategoryRepository _repository;
@@ -20,13 +21,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public ActionResult GetAllCategories()
         {
             var categories = _repository.GetCategories();
             return Ok(_mapper.Map<ICollection<CategoryDto>>(categories));
         }
+        
 
         [HttpGet("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult GetCategoryById(int id)
         {
             var category = _repository.GetCategoryById(id);
@@ -34,6 +38,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}/products")]
+        [MapToApiVersion("1.0")]
         public IActionResult GetAllProductFromCategory(int id)
         {
             var productsByCategory = _repository.GetProductsByCategoryId(id);

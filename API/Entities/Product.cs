@@ -17,11 +17,6 @@ namespace API.Entities
         [MaxLength(1000)]
         public string Description { get; set; }
 
-        public string CategoryName
-        {
-            get => Category.Name;
-        }
-
         public string ImageSource { get; set; }
 
         public string AffiliateLink { get; set; }

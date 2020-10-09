@@ -27,9 +27,6 @@ namespace API.Profile
                 .ForMember(
                     dest => dest.CategoryId,
                     opt => opt.MapFrom(src => src.CategoryId)
-                ).ForMember(
-                    dest => dest.CategoryName,
-                    opt => opt.MapFrom(src => src.CategoryName)
                 );
 
             CreateMap<ProductForCreationDto, Product>();

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using API.Entities;
 using API.Models;
 using API.Services;
@@ -26,7 +26,7 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult GetProducts([FromQuery] string name, [FromQuery] string description)
         {
-            var productsFromRepo = _repository.GetProducts(name,description);
+
             _logger.LogInformation("Show all products on a HTTP GET request.");
             return Ok(_mapper.Map<ICollection<ProductDto>>(productsFromRepo));
         }

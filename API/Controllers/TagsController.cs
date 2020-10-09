@@ -33,6 +33,5 @@ namespace API.Controllers
             var tag = _tagRepository.GetTagById(id);
             return Ok(_mapper.Map<TagDto>(tag));
         }
-        
     }
 }

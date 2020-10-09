@@ -11,5 +11,6 @@ namespace API.Services
         ICollection<Tag> GetAllTags();
         Tag GetTagById(int id);
         IQueryable<ProductDto> GetAllProductsByTag(int tagId);
+
     }
 }

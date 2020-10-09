@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using API.Configurations;
 using API.Contexts;
 using API.Services;
 using AutoMapper;
@@ -15,12 +17,15 @@ namespace API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
             Configuration = configuration;
+            HostEnvironment = hostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+
+        public IHostEnvironment HostEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -52,7 +57,7 @@ namespace API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -65,7 +70,6 @@ namespace API
                     await context.Response.WriteAsync("An unexpected fault happened. Try again later.");
                 });
             });
-            
             app.UseStaticFiles();
 
             app.UseAuthorization();
@@ -73,5 +77,6 @@ namespace API
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
         }
+        
     }
 }

@@ -30,6 +30,8 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            
             services.AddControllers(options =>
             {
                 options.ReturnHttpNotAcceptable = true;
@@ -48,6 +50,11 @@ namespace API
             });
             
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddSwaggerGen(options =>
+            {
+                options.AddSwaggerGenSupport(HostEnvironment, "GiftClub Api", "1.0.0.0", new List<string> { "1.0", "2.0" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,7 +10,7 @@ namespace API.Services
     {
         ICollection<Product> GetProducts();
 
-        ICollection<Product> GetProducts(string name, string description);
+        ICollection<Product> GetProducts(string name, string description, string sortName);
         
         Product GetProductById(int id);
 

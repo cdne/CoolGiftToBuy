@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/categories")]
     [ApiVersion("1.0")]
     [ApiController]
     public class CategoriesController : Controller

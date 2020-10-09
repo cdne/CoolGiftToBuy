@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/tags")]
+
     public class TagsController : ControllerBase
     {
         private readonly ITagRepository _tagRepository;
@@ -19,7 +21,9 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public ActionResult GetTags()
         {
             var tags = _tagRepository.GetAllTags();
@@ -28,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [MapToApiVersion("1.0")]
         public ActionResult GetTagById(int id)
         {
             var tag = _tagRepository.GetTagById(id);

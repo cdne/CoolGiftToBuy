@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Routing;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/products/{productId}/tags")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/products/{productId}/tags")]
+
     public class ProductTagsController : Controller
     {
         private readonly IProductTagRepository _productTagRepository;
@@ -21,6 +23,7 @@ namespace API.Controllers
         }
         
         [HttpGet]
+        [MapToApiVersion("1.0")]
         public IActionResult GetProductTagsByProductId(int productId)
         {
             var allTagsForProduct = _productTagRepository.GetTagsByProductId(productId);
@@ -28,7 +31,8 @@ namespace API.Controllers
             return Ok(_mapper.Map<ICollection<TagDto>>(allTagsForProduct));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")]       
+        [MapToApiVersion("1.0")]
         public IActionResult GetProductTagByTagId(int id)
         {
             var productTagByTagId = _productTagRepository.GetTagById(id);

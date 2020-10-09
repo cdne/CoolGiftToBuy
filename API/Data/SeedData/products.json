@@ -3,18 +3,18 @@
     "Id": 1,
     "Name": "Star Wars Yoda Metal Bookend",
     "Description": "Watch the Force in action by placing your literary collection on this Star Wars Yoda metal bookend. The cle...",
-    "ImageSource": "../Data/Images/star-wars-yoda-bookends-hallmark.jpg",
+    "ImageSource": "images/star-wars-yoda-bookends-hallmark.jpg",
     "AffiliateLink": "http://www.amazon.com/dp/B07CVN64DS/?tag=097-20&amp;ascsubtag=v7_1_3_cwq_4hzj_0_x01_-srt5-",
     "ProductUrl": "star-wars-yoda-metal-bookend",
     "CategoryId": 47
   },
   {
     "Id": 2,
-    "Name": "Lightsaber Willy Warmer",
-    "Description": "Fend off the cold in true Jedi fashion by keeping your Force-sensitive member snug and comfy in this eye-ca...",
-    "ImageSource": "../API/Data/Images/lightsaber-willy-warmer-janecrochetstuff.jpg",
-    "AffiliateLink": "http://www.awin1.com/cread.php?awinaffid=141392&amp;awinmid=6220&amp;clickref=lightsaber-willy-warmer&amp;p=https%3A%2F%2Fwww.etsy.com%2Flisting%2F261060365%2Foriginal-willy-warmer-aka-peter-heater%3Fshow_sold_out_detail=1",
-    "ProductUrl": "lightsaber-willy-warmer",
+    "Name": "The Child Echo Dot Stand",
+    "Description": "Transform your boring old Echo Dot into one of the cutest things around by placing it in this Mandalorian t...",
+    "ImageSource": "images/the-child-alexa.jpg",
+    "AffiliateLink": "http://www.amazon.com/dp/B086W7PH7N/?tag=097-20&amp;ascsubtag=v7_1_3_cwq_5j5x_0_x01_-srt5-",
+    "ProductUrl": "the-child-echo-dot-stand",
     "CategoryId": 47
   },
   {
@@ -667,11 +667,11 @@
   },
   {
     "Id": 75,
-    "Name": "The Child Echo Dot Stand",
-    "Description": "Transform your boring old Echo Dot into one of the cutest things around by placing it in this Mandalorian t...",
-    "ImageSource": "images/the-child-alexa.jpg",
-    "AffiliateLink": "http://www.amazon.com/dp/B086W7PH7N/?tag=097-20&amp;ascsubtag=v7_1_3_cwq_5j5x_0_x01_-srt5-",
-    "ProductUrl": "the-child-echo-dot-stand",
+    "Name": "Lightsaber Willy Warmer",
+    "Description": "Fend off the cold in true Jedi fashion by keeping your Force-sensitive member snug and comfy in this eye-ca...",
+    "ImageSource": "images/lightsaber-willy-warmer-janecrochetstuff.jpg",
+    "AffiliateLink": "http://www.awin1.com/cread.php?awinaffid=141392&amp;awinmid=6220&amp;clickref=lightsaber-willy-warmer&amp;p=https%3A%2F%2Fwww.etsy.com%2Flisting%2F261060365%2Foriginal-willy-warmer-aka-peter-heater%3Fshow_sold_out_detail=1",
+    "ProductUrl": "lightsaber-willy-warmer",
     "CategoryId": 47
   },
   {

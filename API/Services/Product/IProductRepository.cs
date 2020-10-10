@@ -20,10 +20,10 @@ namespace API.Services
         void UpdateProduct(int id, Product product);
 
         /// <summary>
-        /// Delete product by id
+        /// Delete product by id from database
         /// </summary>
         /// <param name="id">id of the product</param>
-        void DeleteProduct(int id);
+        void DeleteProductFromDatabase(int id);
 
     }
 }

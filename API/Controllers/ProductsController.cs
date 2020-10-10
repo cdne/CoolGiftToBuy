@@ -62,5 +62,16 @@ namespace API.Controllers
             return CreatedAtAction(nameof(GetProduct), new {id = productEntity.Id, 
                 version = ApiVersion.Default.ToString()}, productToReturn);
         }
+
+        [HttpPut("{id}")]
+        [MapToApiVersion("1.1")]
+        public ActionResult<ProductForCreationDto> UpdateProduct(int id, [FromBody] ProductForCreationDto product)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            var productToUpdate = _mapper.Map<Product>(product);
+            _repository.UpdateProduct(id, productToUpdate);
+
+            return Ok();
+        }
     }
 }

@@ -73,13 +73,13 @@ namespace API.Controllers
 
             return Ok();
         }
-
+        
         [HttpDelete("{id}")]
         [MapToApiVersion("1.1")]
         public IActionResult DeleteProduct(int id)
         {
             if (!ModelState.IsValid) return BadRequest();
-            _repository.DeleteProduct(id);
+            _repository.DeleteProductFromDatabase(id);
             return Ok();
         }
     }

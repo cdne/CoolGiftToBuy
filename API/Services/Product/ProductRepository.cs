@@ -75,5 +75,20 @@ namespace API.Services
         {
             return _context.Tags.Where(t => t.ProductId == id);
         }
+
+        public void UpdateProduct(int id, Product product)
+        {
+            var productFromDatabase = _context.Products.Find(id);
+            
+            productFromDatabase.Description = product.Description;
+            productFromDatabase.Name = product.Name;
+            productFromDatabase.AffiliateLink = product.AffiliateLink;
+            productFromDatabase.CategoryId = product.CategoryId;
+            productFromDatabase.ImageSource = product.ImageSource;
+            productFromDatabase.ProductUrl = product.ProductUrl;
+
+            _context.Products.Update(productFromDatabase);
+            _context.SaveChanges();
+        }
     }
 }

@@ -90,5 +90,13 @@ namespace API.Services
             _context.Products.Update(productFromDatabase);
             _context.SaveChanges();
         }
+
+        /// <inheritdoc cref="IProductRepository"/>
+        public void DeleteProductFromDatabase(int id)
+        {
+            var productToDelete = _context.Products.Find(id);
+            _context.Products.Remove(productToDelete);
+            _context.SaveChanges();
+        }
     }
 }

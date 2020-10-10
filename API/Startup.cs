@@ -48,9 +48,6 @@ namespace API
                 options.ReportApiVersions = true;
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
-                // options.ApiVersionReader = ApiVersionReader.Combine(
-                //     new QueryStringApiVersionReader("api-version"),
-                //     new HeaderApiVersionReader("api-version"));
             });
 
             services.AddVersionedApiExplorer(options =>

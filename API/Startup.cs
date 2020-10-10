@@ -89,6 +89,9 @@ namespace API
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
                             description.GroupName.ToUpperInvariant());
                     }
+
+                    options.DefaultModelsExpandDepth(-1);
+
                 });
             
             app.UseHttpsRedirection();

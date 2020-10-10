@@ -17,5 +17,7 @@ namespace API.Services
         void AddProduct(Product product);
         IQueryable<Tag> GetProductTags(int productId);
 
+        void UpdateProduct(int id, Product product);
+
     }
 }

@@ -10,6 +10,7 @@ namespace API.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     [Route("api/v{version:apiVersion}/products")]
     
     public class ProductsController : Controller
@@ -27,6 +28,7 @@ namespace API.Controllers
         
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         public IActionResult GetProducts([FromQuery] string name, [FromQuery] string description, [FromQuery] string sortName)
         {
             var productsFromRepo = _repository.GetProducts(name,description,sortName);
@@ -36,6 +38,7 @@ namespace API.Controllers
 
         [HttpGet("{id}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         public ActionResult<ProductDto> GetProduct(int id)
         {
             var product = _repository.GetProductById(id);
@@ -47,6 +50,7 @@ namespace API.Controllers
         
         [HttpPost]        
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         public ActionResult<ProductDto> AddProduct([FromBody] ProductForCreationDto product)
         {
             if (!ModelState.IsValid) return BadRequest();

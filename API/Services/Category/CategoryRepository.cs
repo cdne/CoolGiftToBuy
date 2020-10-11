@@ -51,5 +51,12 @@ namespace API.Services
             _context.Categories.Update(category);
             _context.SaveChanges();
         }
+
+        public void DeleteCategory(int id)
+        {
+            var categoryToDelete = _context.Categories.Find(id);
+            _context.Remove(categoryToDelete);
+            _context.SaveChanges();
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace API.Services
         void AddCategory(Category category);
         void UpdateCategory(int id, Category category);
         void PartiallyUpdateCategory(Category category);
+        void DeleteCategory(int id);
     }
 }

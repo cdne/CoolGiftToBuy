@@ -107,5 +107,12 @@ namespace API.Controllers
                     version = ApiVersion.Default.ToString()}, 
                 categoryDto);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCategory(int id)
+        {
+            _repository.DeleteCategory(id);
+            return Ok("Category was deleted");
+        }
     }
 }

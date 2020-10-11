@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using API.Entities;
 using API.Models;
 using API.Services;
 using AutoMapper;
@@ -9,6 +10,7 @@ namespace API.Controllers
 {
     [Route("api/v{version:apiVersion}/categories")]
     [ApiVersion("1.0")]
+    [ApiVersion("1.1")]
     [ApiController]
     public class CategoriesController : Controller
     {
@@ -25,6 +27,7 @@ namespace API.Controllers
 
         [HttpGet]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         public ActionResult GetAllCategories()
         {
             var categories = _repository.GetCategories();
@@ -34,6 +37,7 @@ namespace API.Controllers
 
         [HttpGet("{id}")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         public ActionResult GetCategoryById(int id)
         {
             var category = _repository.GetCategoryById(id);
@@ -42,6 +46,7 @@ namespace API.Controllers
 
         [HttpGet("{id}/products")]
         [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
         public IActionResult GetAllProductFromCategory(int id)
         {
             var productsByCategory = _repository.GetProductsByCategoryId(id);

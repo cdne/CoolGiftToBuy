@@ -20,6 +20,7 @@ namespace API.Controllers
         {
             _repository = repository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpGet]

@@ -28,5 +28,11 @@ namespace API.Services
         {
             return _context.Products.Where(p => p.CategoryId == id);
         }
+
+        public void AddCategory(Category category)
+        {
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+        }
     }
 }

@@ -107,5 +107,10 @@ namespace API.Services
             _context.Products.Remove(productToDelete);
             _context.SaveChanges();
         }
+
+        public IQueryable<Tag> GetTagsByProductId(int id)
+        {
+            return _context.Tags.Where(t => t.ProductId == id);
+        }
     }
 }

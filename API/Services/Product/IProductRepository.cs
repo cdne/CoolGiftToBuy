@@ -26,6 +26,9 @@ namespace API.Services
         /// </summary>
         /// <param name="id">id of the product</param>
         void DeleteProductFromDatabase(int id);
+        
+        IQueryable<Tag> GetTagsByProductId(int productId);
+
 
     }
 }

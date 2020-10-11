@@ -45,5 +45,11 @@ namespace API.Services
             _context.Update(categoryToUpdate);
             _context.SaveChanges();
         }
+
+        public void PartiallyUpdateCategory(Category category)
+        {
+            _context.Categories.Update(category);
+            _context.SaveChanges();
+        }
     }
 }

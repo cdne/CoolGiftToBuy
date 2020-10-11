@@ -12,5 +12,6 @@ namespace API.Services
         IQueryable<Product> GetProductsByCategoryId(int id);
         void AddCategory(Category category);
         void UpdateCategory(int id, Category category);
+        void PartiallyUpdateCategory(Category category);
     }
 }

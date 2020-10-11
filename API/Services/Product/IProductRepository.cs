@@ -19,6 +19,8 @@ namespace API.Services
 
         void UpdateProduct(int id, Product product);
 
+        void Update(Product product);
+
         /// <summary>
         /// Delete product by id from database
         /// </summary>

@@ -1,5 +1,6 @@
 ﻿using API.Entities;
 using API.Models;
+using Microsoft.Extensions.Options;
 
 namespace API.Profile
 {
@@ -29,6 +30,8 @@ namespace API.Profile
                     opt => opt.MapFrom(src => src.CategoryId)
                 );
 
+            CreateMap<ProductDto, Product>();
+            
             CreateMap<ProductForCreationDto, Product>();
         }
     }

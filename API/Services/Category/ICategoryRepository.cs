@@ -8,8 +8,8 @@ namespace API.Services
     public interface ICategoryRepository
     {
         ICollection<Category> GetCategories();
-
         Category GetCategoryById(int id);
         IQueryable<Product> GetProductsByCategoryId(int id);
+        void AddCategory(Category category);
     }
 }

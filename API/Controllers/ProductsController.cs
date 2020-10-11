@@ -66,13 +66,17 @@ namespace API.Controllers
 
         [HttpPut("{id}")]
         [MapToApiVersion("1.1")]
-        public ActionResult<ProductForCreationDto> UpdateProduct(int id, [FromBody] ProductForCreationDto product)
+        public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] ProductDto product)
         {
             if (!ModelState.IsValid) return BadRequest();
             var productToUpdate = _mapper.Map<Product>(product);
+            product.Id = id;
+            
             _repository.UpdateProduct(id, productToUpdate);
-
-            return Ok();
+            
+            return AcceptedAtAction(nameof(GetProduct), new {id = product.Id, 
+                    version = ApiVersion.Default.ToString()}, 
+                product);
         }
         
         [HttpDelete("{id}")]

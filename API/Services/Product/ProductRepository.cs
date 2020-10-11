@@ -5,16 +5,19 @@ using API.Contexts;
 using API.Entities;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace API.Services
 {
     public class ProductRepository : IProductRepository
     {
         private readonly GiftContext _context;
+        private readonly ILogger<ProductRepository> _logger;
 
-        public ProductRepository(GiftContext context)
+        public ProductRepository(GiftContext context, ILogger<ProductRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
         
         public ICollection<Product> GetProducts()
@@ -88,6 +91,12 @@ namespace API.Services
             productFromDatabase.ProductUrl = product.ProductUrl;
 
             _context.Products.Update(productFromDatabase);
+            _context.SaveChanges();
+        }
+
+        public void Update(Product product)
+        {
+            _context.Update(product);
             _context.SaveChanges();
         }
 

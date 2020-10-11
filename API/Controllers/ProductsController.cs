@@ -3,6 +3,7 @@ using API.Entities;
 using API.Models;
 using API.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -81,6 +82,26 @@ namespace API.Controllers
             if (!ModelState.IsValid) return BadRequest();
             _repository.DeleteProductFromDatabase(id);
             return Ok();
+        }
+
+        [HttpPatch("{id}")]
+        [MapToApiVersion("1.1")]
+        public IActionResult PartiallyUpdateProduct(int id,
+            [FromBody] JsonPatchDocument<ProductDto> productPatch)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            
+            var product = _repository.GetProductById(id);
+            var productDto = _mapper.Map<ProductDto>(product);
+            
+            productPatch.ApplyTo(productDto);
+            
+            _mapper.Map(productDto, product);
+            _repository.Update(product);
+
+            return AcceptedAtAction(nameof(GetProduct), new {id = productDto.Id, 
+                    version = ApiVersion.Default.ToString()}, 
+                productDto);
         }
     }
 }

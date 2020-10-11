@@ -34,5 +34,16 @@ namespace API.Services
             _context.Categories.Add(category);
             _context.SaveChanges();
         }
+
+        public void UpdateCategory(int id, Category category)
+        {
+            var categoryToUpdate = _context.Categories.Find(id);
+
+            categoryToUpdate.Name = category.Name;
+            categoryToUpdate.Description = category.Description;
+
+            _context.Update(categoryToUpdate);
+            _context.SaveChanges();
+        }
     }
 }

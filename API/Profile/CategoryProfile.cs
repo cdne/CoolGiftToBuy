@@ -15,6 +15,7 @@ namespace API.Profile
                     dest => dest.Description,
                     opt => opt.MapFrom(src => src.Description)
                 );
+            CreateMap<CategoryForCreationDto, Category>();
         }
     }
 }

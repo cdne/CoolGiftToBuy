@@ -3,6 +3,7 @@ using API.Entities;
 using API.Models;
 using API.Services;
 using AutoMapper;
+using AutoMapper.Configuration.Conventions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -52,5 +53,22 @@ namespace API.Controllers
             var productsByCategory = _repository.GetProductsByCategoryId(id);
             return Ok(_mapper.Map<ICollection<ProductDto>>(productsByCategory));
         }
+
+        [HttpPost]
+        [MapToApiVersion("1.1")]
+        public IActionResult AddCategory([FromBody] CategoryForCreationDto category)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            
+            var categoryToAdd = _mapper.Map<Category>(category);
+            _repository.AddCategory(categoryToAdd);
+            
+            var categoryToReturn = _mapper.Map<CategoryDto>(categoryToAdd);
+            
+            _logger.LogInformation($"{categoryToReturn.Id}");
+            
+            return CreatedAtAction(nameof(GetCategoryById), new {id = categoryToReturn.Id, version = ApiVersion.Default.ToString()}, categoryToReturn);
+        }
+        
     }
 }

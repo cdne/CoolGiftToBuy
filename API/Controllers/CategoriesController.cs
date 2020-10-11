@@ -74,11 +74,19 @@ namespace API.Controllers
 
         [HttpPut("{id}")]
         [MapToApiVersion("1.1")]
-        public IActionResult UpdateCategory(int id, [FromBody] CategoryDto category)
+        public IActionResult UpdateCategory(int id, [FromBody] CategoryDto categoryDto)
         {
             if (!ModelState.IsValid) return BadRequest();
-            
-            
+            var category = _mapper.Map<Category>(categoryDto);
+            _repository.UpdateCategory(id, category);
+
+            var categoryToReturn = _mapper.Map<CategoryDto>(category);
+            categoryToReturn.Id = id;
+        
+            return AcceptedAtAction(nameof(GetCategoryById), 
+                new {id = categoryToReturn.Id, version = ApiVersion.Default.ToString()},
+                categoryToReturn);
+
         }
     }
 }

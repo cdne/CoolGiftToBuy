@@ -67,8 +67,18 @@ namespace API.Controllers
             
             _logger.LogInformation($"{categoryToReturn.Id}");
             
-            return CreatedAtAction(nameof(GetCategoryById), new {id = categoryToReturn.Id, version = ApiVersion.Default.ToString()}, categoryToReturn);
+            return CreatedAtAction(nameof(GetCategoryById), 
+                new {id = categoryToReturn.Id, version = ApiVersion.Default.ToString()}, 
+                categoryToReturn);
         }
-        
+
+        [HttpPut("{id}")]
+        [MapToApiVersion("1.1")]
+        public IActionResult UpdateCategory(int id, [FromBody] CategoryDto category)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            
+            
+        }
     }
 }

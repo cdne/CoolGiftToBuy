@@ -4,6 +4,7 @@ using API.Models;
 using API.Services;
 using AutoMapper;
 using AutoMapper.Configuration.Conventions;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -86,7 +87,25 @@ namespace API.Controllers
             return AcceptedAtAction(nameof(GetCategoryById), 
                 new {id = categoryToReturn.Id, version = ApiVersion.Default.ToString()},
                 categoryToReturn);
+        }
 
+        [HttpPatch("{id}")]
+        [MapToApiVersion("1.1")]
+        public IActionResult PartiallyUpdateCategory(int id, [FromBody] JsonPatchDocument<CategoryDto> patchCategory)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            
+            var category = _repository.GetCategoryById(id);
+            var categoryDto = _mapper.Map<CategoryDto>(category);
+            
+            patchCategory.ApplyTo(categoryDto);
+
+            _mapper.Map(categoryDto, category);
+            _repository.PartiallyUpdateCategory(category);
+            
+            return AcceptedAtAction(nameof(GetCategoryById), new {id = categoryDto.Id, 
+                    version = ApiVersion.Default.ToString()}, 
+                categoryDto);
         }
     }
 }

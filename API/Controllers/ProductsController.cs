@@ -48,6 +48,17 @@ namespace API.Controllers
             return Ok(_mapper.Map<ProductDto>(product));
         }
         
+        [HttpGet]
+        [MapToApiVersion("1.0")]
+        [MapToApiVersion("1.1")]
+        [Route("{id}/tags")]
+        public IActionResult GetAllProductTags(int id)
+        {
+            var allTagsForProduct = _repository.GetTagsByProductId(id);
+            
+            return Ok(_mapper.Map<ICollection<TagDto>>(allTagsForProduct));
+        }
+        
         
         [HttpPost]        
         [MapToApiVersion("1.0")]

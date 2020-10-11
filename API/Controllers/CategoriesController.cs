@@ -3,6 +3,7 @@ using API.Models;
 using API.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
@@ -13,8 +14,9 @@ namespace API.Controllers
     {
         private readonly ICategoryRepository _repository;
         private readonly IMapper _mapper;
+        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ICategoryRepository repository, IMapper mapper)
+        public CategoriesController(ICategoryRepository repository, IMapper mapper, ILogger<CategoriesController> logger)
         {
             _repository = repository;
             _mapper = mapper;

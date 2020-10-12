@@ -14,5 +14,6 @@ namespace API.Services
 
         void Add(Tag tag);
         void Update(int id, Tag tag);
+        void PartiallyUpdate(Tag tag);
     }
 }

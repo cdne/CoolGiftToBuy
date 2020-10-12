@@ -1,4 +1,4 @@
-﻿using API.Entities;
+using API.Entities;
 using API.Models;
 
 namespace API.Profile
@@ -14,6 +14,7 @@ namespace API.Profile
                 dest => dest.ProductId,
                 opt => opt.MapFrom(src => src.ProductId)
             );
+            CreateMap<TagForCreationDto, Tag>();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using API.Contexts;
 using API.Entities;
@@ -29,6 +29,11 @@ namespace API.Services
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public void Add(Tag tag)
+        {
+            _context.Tags.Add(tag);
+            _context.SaveChanges();
+        }
     }
 }

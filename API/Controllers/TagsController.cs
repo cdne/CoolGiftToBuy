@@ -42,5 +42,20 @@ namespace API.Controllers
             var tag = _tagRepository.GetTagById(id);
             return Ok(_mapper.Map<TagDto>(tag));
         }
+
+        [HttpPost]
+        [MapToApiVersion("1.1")]
+        public IActionResult AddTag([FromBody] TagForCreationDto tagForCreationDto)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            var tag = _mapper.Map<Tag>(tagForCreationDto);
+            _tagRepository.Add(tag);
+
+            var tagToReturn = _mapper.Map<TagDto>(tag);
+
+            return CreatedAtAction(nameof(GetTagById),
+                new {id = tagToReturn.Id, version = ApiVersion.Default.ToString()},
+                tagToReturn);
+        }
     }
 }

@@ -57,5 +57,20 @@ namespace API.Controllers
                 new {id = tagToReturn.Id, version = ApiVersion.Default.ToString()},
                 tagToReturn);
         }
+
+        [HttpPut("{id}")]
+        [MapToApiVersion("1.1")]
+        public IActionResult UpdateTag(int id, [FromBody] TagDto tagDto)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            var tag = _mapper.Map<Tag>(tagDto);
+            _tagRepository.Update(id, tag);
+
+            var tagToReturn = _mapper.Map<TagDto>(tag);
+            tagToReturn.Id = id;
+
+            return AcceptedAtAction(nameof(GetTagById), new {id = tagToReturn.Id, version = ApiVersion.Default.ToString()},
+                tagToReturn);
+        }
     }
 }

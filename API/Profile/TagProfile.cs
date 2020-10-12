@@ -14,7 +14,9 @@ namespace API.Profile
                 dest => dest.ProductId,
                 opt => opt.MapFrom(src => src.ProductId)
             );
+
             CreateMap<TagForCreationDto, Tag>();
+            CreateMap<TagDto, Tag>();
         }
     }
 }

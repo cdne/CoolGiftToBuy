@@ -3,6 +3,7 @@ using API.Entities;
 using API.Models;
 using API.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -71,6 +72,25 @@ namespace API.Controllers
 
             return AcceptedAtAction(nameof(GetTagById), new {id = tagToReturn.Id, version = ApiVersion.Default.ToString()},
                 tagToReturn);
+        }
+
+        [HttpPatch("{id}")]
+        [MapToApiVersion("1.1")]
+        public IActionResult PartiallyUpdateTag(int id,[FromBody] JsonPatchDocument<TagDto> patchTag)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            var tag = _tagRepository.GetTagById(id);
+            var tagDto = _mapper.Map<TagDto>(tag);
+            
+            patchTag.ApplyTo(tagDto);
+
+            _mapper.Map(tagDto, tag);
+            _tagRepository.PartiallyUpdate(tag);
+            
+            return AcceptedAtAction(nameof(GetTagById), new {id = tagDto.Id, 
+                    version = ApiVersion.Default.ToString()}, 
+                tagDto);
         }
     }
 }

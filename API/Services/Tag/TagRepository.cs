@@ -35,5 +35,13 @@ namespace API.Services
             _context.Tags.Add(tag);
             _context.SaveChanges();
         }
+
+        public void Update(int id, Tag tag)
+        {
+            var tagToUpdate = GetTagById(id);
+            tagToUpdate.Name = tag.Name;
+            _context.Tags.Update(tagToUpdate);
+            _context.SaveChanges();
+        }
     }
 }

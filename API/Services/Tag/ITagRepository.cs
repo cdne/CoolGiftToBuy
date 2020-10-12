@@ -13,5 +13,6 @@ namespace API.Services
         IQueryable<ProductDto> GetAllProductsByTag(int tagId);
 
         void Add(Tag tag);
+        void Update(int id, Tag tag);
     }
 }

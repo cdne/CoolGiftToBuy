@@ -43,5 +43,12 @@ namespace API.Services
             _context.Tags.Update(tagToUpdate);
             _context.SaveChanges();
         }
+
+        public void PartiallyUpdate(Tag tag)
+        {
+            _context.Tags.Update(tag);
+            _context.SaveChanges();
+        }
+
     }
 }

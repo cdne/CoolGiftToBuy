@@ -92,5 +92,14 @@ namespace API.Controllers
                     version = ApiVersion.Default.ToString()}, 
                 tagDto);
         }
+
+        [HttpDelete("{id}")]
+        [MapToApiVersion("1.1")]
+        public IActionResult DeleteTag(int id)
+        {
+            var tag = _tagRepository.GetTagById(id);
+            _tagRepository.Delete(tag);
+            return Ok($"Tag with id {id} was deleted.");
+        }
     }
 }

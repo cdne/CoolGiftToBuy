@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using API.Contexts;
 using API.Entities;
@@ -50,5 +50,10 @@ namespace API.Services
             _context.SaveChanges();
         }
 
+        public void Delete(Tag tag)
+        {
+            _context.Tags.Remove(tag);
+            _context.SaveChanges();
+        }
     }
 }

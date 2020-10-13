@@ -15,27 +15,26 @@ namespace API.Services
             _context = context;
         }
         
+        /// <inheritdoc cref="ITagRepository"/>
         public ICollection<Tag> GetAllTags()
         {
             return _context.Tags.ToList();
         }
 
+        /// <inheritdoc cref="ITagRepository"/>
         public Tag GetTagById(int id)
         {
             return _context.Tags.Find(id);
         }
-
-        public IQueryable<ProductDto> GetAllProductsByTag(int tagId)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
+        /// <inheritdoc cref="ITagRepository"/>
         public void Add(Tag tag)
         {
             _context.Tags.Add(tag);
             _context.SaveChanges();
         }
-
+        
+        /// <inheritdoc cref="ITagRepository"/>
         public void Update(int id, Tag tag)
         {
             var tagToUpdate = GetTagById(id);
@@ -43,13 +42,15 @@ namespace API.Services
             _context.Tags.Update(tagToUpdate);
             _context.SaveChanges();
         }
-
+        
+        /// <inheritdoc cref="ITagRepository"/>
         public void PartiallyUpdate(Tag tag)
         {
             _context.Tags.Update(tag);
             _context.SaveChanges();
         }
-
+        
+        /// <inheritdoc cref="ITagRepository"/>
         public void Delete(Tag tag)
         {
             _context.Tags.Remove(tag);

@@ -6,6 +6,9 @@ namespace API.Profile
 {
     public class ProductProfile : AutoMapper.Profile
     {
+        /// <summary>
+        /// Map Product entities to Product models
+        /// </summary>
         public ProductProfile()
         {
             CreateMap<Product, ProductDto>()

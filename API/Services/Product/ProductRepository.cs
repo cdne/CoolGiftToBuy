@@ -20,13 +20,15 @@ namespace API.Services
             _logger = logger;
         }
         
+        /// <inheritdoc cref="IProductRepository"/>
         public ICollection<Product> GetProducts()
         {
            return _context.Products
                .OrderBy(p => p.Id)
                .ToList();
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public ICollection<Product> GetProducts(string name, string description, string sortName)
         {            
             var collection = _context.Products as IQueryable<Product>;
@@ -62,23 +64,27 @@ namespace API.Services
                 .Where(p => p.Description.ToLower().Contains(description.ToLower()));
             return collection.ToList();
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public Product GetProductById(int id)
         {
             return _context.Products.Find(id);
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public void AddProduct(Product product)
         {
             _context.Products.Add(product);
             _context.SaveChanges();
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public IQueryable<Tag> GetProductTags(int id)
         {
             return _context.Tags.Where(t => t.ProductId == id);
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public void UpdateProduct(int id, Product product)
         {
             var productFromDatabase = _context.Products.Find(id);
@@ -93,7 +99,8 @@ namespace API.Services
             _context.Products.Update(productFromDatabase);
             _context.SaveChanges();
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public void Update(Product product)
         {
             _context.Update(product);
@@ -107,7 +114,8 @@ namespace API.Services
             _context.Products.Remove(productToDelete);
             _context.SaveChanges();
         }
-
+        
+        /// <inheritdoc cref="IProductRepository"/>
         public IQueryable<Tag> GetTagsByProductId(int id)
         {
             return _context.Tags.Where(t => t.ProductId == id);

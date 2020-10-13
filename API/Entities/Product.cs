@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Product class entity used in Entity Framework
+    /// </summary>
     public class Product
     {
         [Key]

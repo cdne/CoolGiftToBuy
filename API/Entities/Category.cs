@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Category class entity used in Entity Framework 
+    /// </summary>
     public class Category
     {
         [Key]

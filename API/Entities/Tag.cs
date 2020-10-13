@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
+    /// <summary>
+    /// Tag class entity used in Entity Framework
+    /// </summary>
     public class Tag
     {
         [Key]

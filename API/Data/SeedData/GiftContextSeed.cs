@@ -10,8 +10,18 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Data.SeedData
 {
-    public class GiftContextSeed
+    /// <summary>
+    /// Class adds data in database if it's empty
+    /// Reads json files and populates database with data
+    /// </summary>
+    public static class GiftContextSeed
     {
+        /// <summary>
+        /// Add categories and products in database if it's empty
+        /// </summary>
+        /// <param name="context">Entity framework context</param>
+        /// <param name="loggerFactory">Logger</param>
+        /// <returns></returns>
         public static async Task SeedAsync(GiftContext context, ILoggerFactory loggerFactory)
         {
             try
@@ -43,7 +53,7 @@ namespace API.Data.SeedData
             }
             catch (Exception ex)
             {
-                loggerFactory.CreateLogger<GiftContext>().LogError("Error adding categories to db");
+                loggerFactory.CreateLogger<GiftContext>().LogError($"{ex.Message} - Error adding categories to db");
             }
         }
     }

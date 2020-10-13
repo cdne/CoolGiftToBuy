@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Tag controller
+    /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [Route("api/v{version:apiVersion}/tags")]
-
     public class TagsController : ControllerBase
     {
         private readonly ITagRepository _tagRepository;
@@ -24,7 +26,10 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-        
+        /// <summary>
+        /// Get all tags on HttpGet request
+        /// </summary>
+        /// <returns>Collection of tags</returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
@@ -35,6 +40,11 @@ namespace API.Controllers
             
         }
 
+        /// <summary>
+        /// Get tag by id on HttpGet request
+        /// </summary>
+        /// <param name="id">Tag id</param>
+        /// <returns>Tag found by id</returns>
         [HttpGet("{id}")]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
@@ -44,6 +54,11 @@ namespace API.Controllers
             return Ok(_mapper.Map<TagDto>(tag));
         }
 
+        /// <summary>
+        /// Add tag on HttpPost request
+        /// </summary>
+        /// <param name="tagForCreationDto">Model used for creating tag</param>
+        /// <returns>Created tag</returns>
         [HttpPost]
         [MapToApiVersion("1.1")]
         public IActionResult AddTag([FromBody] TagForCreationDto tagForCreationDto)
@@ -59,6 +74,12 @@ namespace API.Controllers
                 tagToReturn);
         }
 
+        /// <summary>
+        /// Update tag by id on HttpPut request
+        /// </summary>
+        /// <param name="id">Tag id</param>
+        /// <param name="tagDto">Model used for creating tag</param>
+        /// <returns>Updated tag</returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.1")]
         public IActionResult UpdateTag(int id, [FromBody] TagDto tagDto)
@@ -74,6 +95,12 @@ namespace API.Controllers
                 tagToReturn);
         }
 
+        /// <summary>
+        /// Update tag on HttpPatch request
+        /// </summary>
+        /// <param name="id">Tag id</param>
+        /// <param name="patchTag">JsonPatchDocument of TagDto type</param>
+        /// <returns>Updated tag</returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.1")]
         public IActionResult PartiallyUpdateTag(int id,[FromBody] JsonPatchDocument<TagDto> patchTag)
@@ -93,6 +120,11 @@ namespace API.Controllers
                 tagDto);
         }
 
+        /// <summary>
+        /// Delete tag on HttpDelete request
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.1")]
         public IActionResult DeleteTag(int id)

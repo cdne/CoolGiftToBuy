@@ -54,7 +54,6 @@ namespace API
             services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefaultValues>());
             
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductTagRepository, ProductTagRepository>();
             services.AddScoped<ITagRepository, TagRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             

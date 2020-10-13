@@ -3,6 +3,7 @@ using API.Entities;
 using API.Models;
 using API.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace API.Controllers
 {
     [ApiController]
+    [Authorize]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [Route("api/v{version:apiVersion}/products")]
@@ -30,7 +32,8 @@ namespace API.Controllers
         [HttpGet]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
-        public IActionResult GetProducts([FromQuery] string name, [FromQuery] string description, [FromQuery] string sortName)
+        public IActionResult GetProducts([FromQuery] string name, [FromQuery] string description, 
+            [FromQuery] string sortName)
         {
             var productsFromRepo = _repository.GetProducts(name,description,sortName);
             _logger.LogInformation("Show all products on a HTTP GET request.");

@@ -5,6 +5,10 @@ namespace API.Profile
 {
     public class TagProfile :AutoMapper.Profile
     {
+        
+        /// <summary>
+        /// Map Tag entities to Tag models
+        /// </summary>
         public TagProfile()
         {
             CreateMap<Tag, TagDto>().ForMember(

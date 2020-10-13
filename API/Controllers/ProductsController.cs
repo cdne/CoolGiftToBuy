@@ -10,12 +10,14 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Products controller
+    /// </summary>
     [ApiController]
     [Authorize]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [Route("api/v{version:apiVersion}/products")]
-    
     public class ProductsController : Controller
     {
         private readonly IProductRepository _repository;
@@ -29,6 +31,13 @@ namespace API.Controllers
             _logger = logger;
         }
         
+        /// <summary>
+        /// Get all products on HttpGet request
+        /// </summary>
+        /// <param name="name">Query used for filtering products name</param>
+        /// <param name="description">Query used for filtering products description</param>
+        /// <param name="sortName">Query used for sorting name</param>
+        /// <returns>Collection of products</returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
@@ -40,6 +49,11 @@ namespace API.Controllers
             return Ok(_mapper.Map<ICollection<ProductDto>>(productsFromRepo));
         }
 
+        /// <summary>
+        /// Get product by product id on HttpGet request
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Product DTO</returns>
         [HttpGet("{id}")]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
@@ -51,6 +65,11 @@ namespace API.Controllers
             return Ok(_mapper.Map<ProductDto>(product));
         }
         
+        /// <summary>
+        /// Get all products tag by id on HttpGet request
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>Tags collection</returns>
         [HttpGet]
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
@@ -62,7 +81,11 @@ namespace API.Controllers
             return Ok(_mapper.Map<ICollection<TagDto>>(allTagsForProduct));
         }
         
-        
+        /// <summary>
+        /// Add product on HttpPost request
+        /// </summary>
+        /// <param name="product">Product model used for creating</param>
+        /// <returns>Created product</returns>
         [HttpPost]        
         [MapToApiVersion("1.0")]
         [MapToApiVersion("1.1")]
@@ -78,6 +101,12 @@ namespace API.Controllers
                 version = ApiVersion.Default.ToString()}, productToReturn);
         }
 
+        /// <summary>
+        /// Update product on HttpPut request
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <param name="product">Product DTO</param>
+        /// <returns>Updated product</returns>
         [HttpPut("{id}")]
         [MapToApiVersion("1.1")]
         public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] ProductDto product)
@@ -93,6 +122,11 @@ namespace API.Controllers
                 product);
         }
         
+        /// <summary>
+        /// Delete product on HttpDelete request
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <returns>201 response</returns>
         [HttpDelete("{id}")]
         [MapToApiVersion("1.1")]
         public IActionResult DeleteProduct(int id)
@@ -102,6 +136,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Update product on HttpPatch request
+        /// </summary>
+        /// <param name="id">Product id</param>
+        /// <param name="productPatch">JsonPatchDocument of type ProductDto</param>
+        /// <returns>Updated product</returns>
         [HttpPatch("{id}")]
         [MapToApiVersion("1.1")]
         public IActionResult PartiallyUpdateProduct(int id,

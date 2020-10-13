@@ -5,6 +5,9 @@ namespace API.Profile
 {
     public class CategoryProfile : AutoMapper.Profile
     {
+        /// <summary>
+        /// Map Category entity to Category models
+        /// </summary>
         public CategoryProfile()
         {
             CreateMap<Category, CategoryDto>()

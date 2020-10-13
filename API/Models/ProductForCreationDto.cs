@@ -1,5 +1,8 @@
 ﻿namespace API.Models
 {
+    /// <summary>
+    /// Class used for creating Product on HttpPost request
+    /// </summary>
     public class ProductForCreationDto
     {
         public string Name { get; set; }

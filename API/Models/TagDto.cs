@@ -1,5 +1,8 @@
 ﻿namespace API.Models
 {
+    /// <summary>
+    /// Tag DTO without Product property
+    /// </summary>
     public class TagDto
     {
         public int Id { get; set; }

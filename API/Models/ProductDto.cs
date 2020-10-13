@@ -1,5 +1,8 @@
 ﻿namespace API.Models
 {
+    /// <summary>
+    /// Product data transfer object class without Tags collection
+    /// </summary>
     public class ProductDto
     {
         public int Id { get; set; }

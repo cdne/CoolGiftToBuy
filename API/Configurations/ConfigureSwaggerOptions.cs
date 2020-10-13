@@ -12,21 +12,28 @@ namespace API.Configurations
 
         public ConfigureSwaggerOptions(IApiVersionDescriptionProvider provider) => _provider = provider;
 
+        /// <summary>
+        /// Add a swagger document for each discovered API version
+        /// </summary>
+        /// <param name="options"></param>
         public void Configure(SwaggerGenOptions options)
         {
-            // add a swagger document for each discovered API version
-            // note: you might choose to skip or document deprecated API versions differently
             foreach (var description in _provider.ApiVersionDescriptions)
             {
                 options.SwaggerDoc(description.GroupName, CreateInfoForApiVersion(description));
             }
         }
 
+        /// <summary>
+        /// Set API title and description
+        /// </summary>
+        /// <param name="description">Api description</param>
+        /// <returns></returns>
         private static OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
         {
             var info = new OpenApiInfo()
             {
-                Title = "Sample API",
+                Title = "GiftClub API",
                 Version = description.ApiVersion.ToString(),
             };
 

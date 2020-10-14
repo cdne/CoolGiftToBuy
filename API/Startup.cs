@@ -18,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace API
@@ -51,7 +52,19 @@ namespace API
             });
             
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-            services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefaultValues>());
+            services.AddSwaggerGen(options =>
+            {
+                options.OperationFilter<SwaggerDefaultValues>();
+                options.AddSecurityDefinition("bearer", new OpenApiSecurityScheme()
+                {
+                    Description = "`Token only!!!` - without `Bearer ` prefix",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Scheme = "bearer"
+                });
+
+            });
             
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ITagRepository, TagRepository>();
@@ -65,16 +78,15 @@ namespace API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllersWithViews().AddNewtonsoftJson();
-            
-            // Authentication
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.Authority = "https://dev-rrtxf9ix.us.auth0.com/";
-                options.Audience = "https://giftclub.com";
+                options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
+                options.Audience = Configuration["Auth0:Audience"];
             });
         }
 
@@ -114,9 +126,9 @@ namespace API
             });
             app.UseStaticFiles();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             

@@ -3,6 +3,7 @@ using API.Entities;
 using API.Models;
 using API.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace API.Controllers
     /// Tag controller
     /// </summary>
     [ApiController]
+    [Authorize]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [Route("api/v{version:apiVersion}/tags")]

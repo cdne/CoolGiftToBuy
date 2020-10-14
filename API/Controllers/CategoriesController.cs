@@ -4,6 +4,7 @@ using API.Models;
 using API.Services;
 using AutoMapper;
 using AutoMapper.Configuration.Conventions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace API.Controllers
 {
     [Route("api/v{version:apiVersion}/categories")]
+    [Authorize]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [ApiController]

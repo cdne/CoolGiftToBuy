@@ -66,16 +66,15 @@ namespace API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllersWithViews().AddNewtonsoftJson();
-            
-            // Authentication
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.Authority = "https://dev-rrtxf9ix.us.auth0.com/";
-                options.Audience = "https://giftclub.com";
+                options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
+                options.Audience = Configuration["Auth0:Audience"];
             });
         }
 
@@ -116,8 +115,6 @@ namespace API
             app.UseStaticFiles();
 
             app.UseAuthorization();
-
-            app.UseAuthentication();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             

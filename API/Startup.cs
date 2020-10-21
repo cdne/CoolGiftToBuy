@@ -54,15 +54,16 @@ namespace API
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen(options =>
             {
-                options.OperationFilter<SwaggerDefaultValues>();
                 options.AddSecurityDefinition("bearer", new OpenApiSecurityScheme()
                 {
+                    Name = "Authorization",
                     Description = "`Token only!!!` - without `Bearer ` prefix",
                     Type = SecuritySchemeType.Http,
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
                     Scheme = "bearer"
                 });
+                options.OperationFilter<SwaggerDefaultValues>();
 
             });
             

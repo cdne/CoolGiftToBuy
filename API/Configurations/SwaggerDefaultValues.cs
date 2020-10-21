@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -33,18 +34,25 @@ namespace API.Configurations
 
                 parameter.Required |= description.IsRequired;
             }
-            
+        
+            var isAuthorized = context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any() ||
+                               context.MethodInfo.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any();
+ 
+            if (!isAuthorized) return;
 
 
-            var jwtbearerScheme = new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "bearer" }
-            };
+            var jwtBearerScheme = new OpenApiSecurityScheme();
 
             operation.Security = new List<OpenApiSecurityRequirement>
             {
-                new OpenApiSecurityRequirement { [jwtbearerScheme] = new string []{} }
+                new OpenApiSecurityRequirement
+                {
+                    [ jwtBearerScheme ] = new string [] {  }
+                }
             };
+
+            jwtBearerScheme.Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = "bearer"};
+
         }
     }
 }

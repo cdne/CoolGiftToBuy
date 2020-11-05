@@ -1,4 +1,5 @@
-#Gift Shop
+# GiftShop
+
 Shop where you can find affiliate products in different gift categories
 
 ## API 
